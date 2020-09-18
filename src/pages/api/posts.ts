@@ -27,10 +27,16 @@ export async function getPostBySlug(slug: string) {
 
   const baseUrl =
     process.env.NODE_ENV === "development"
-      ? "http:localhost:3000"
+      ? "http://localhost:3000"
       : "https://thumbnail-serverless-whith-nextks-puppeteer.vercel.app";
 
-  const thumbnailUrl = `${baseUrl}/api/thumbnail.png?title=${meta.data.title}`;
+  let thumbnailLogos = "";
+
+  meta.data.thumbnailLogos.forEach((thumbnailLogo) => {
+    thumbnailLogos += `&thumbnailLogo=${thumbnailLogo}`;
+  });
+
+  const thumbnailUrl = `${baseUrl}/api/thumbnail.png?title=${meta.data.title}${thumbnailLogos}`;
 
   return {
     title: meta.data.title,

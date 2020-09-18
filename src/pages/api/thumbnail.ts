@@ -10,12 +10,13 @@ export default async function (
 ) {
   try {
     const title = String(request.query.title);
+    const thumbnailLogos = request.query.thumbnailLogo as string[];
 
-    if (!title) {
+    if (!title && !thumbnailLogos) {
       throw new Error("Title is required");
     }
 
-    const html = getThubnailTemplate(title);
+    const html = getThubnailTemplate(title, thumbnailLogos);
 
     const file = await getScreenshot(html, isDev);
 

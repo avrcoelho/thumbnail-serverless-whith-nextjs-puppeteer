@@ -1,7 +1,6 @@
 import React from "react";
 import PostLayout from "../_layouts/PostLayout";
 import { getPostBySlug, getAllPosts } from "./api/posts";
-import { GetStaticPropsContext } from "next";
 
 interface PostProps {
   title: string;
